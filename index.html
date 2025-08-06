@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-size: 1.2rem;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      width: 80px;
+      margin-left: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #43a047;
+    }
+
+    #password {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 8px;
+      word-wrap: break-word;
+      max-width: 80%;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Password Generator</h1>
+    <label for="length">Password Length:</label>
+    <input type="number" id="length" value="12" min="4" max="128"><br>
+    <button onclick="generate()">Generate Password</button><br>
+    <p>Your Password:</p>
+    <span id="password">[Click "Generate"]</span>
+  </div>
+
+  <script>
+    function generate() {
+      const length = document.getElementById('length').value;
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+={}[]/?_|<>";
+      let password = '';
+
+      for (let i = 0; i < length; i++) {
+        const random = Math.floor(Math.random() * chars.length);
+        password += chars.charAt(random);
+      }
+
+      document.getElementById('password').textContent = password;
+    }
+  </script>
+</body>
+</html>
